@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 public class SwagLabs {
 
+    int productNumber = 2;
+
     @Test
     public void swagLabsTests() {
         WebDriverManager.chromedriver().setup();
@@ -29,12 +31,18 @@ public class SwagLabs {
         WebElement productsLogo = driver.findElement(By.cssSelector(".title"));
         Assert.assertEquals(productsLogo.isDisplayed(), true);
 
+        List <WebElement> productName = driver.findElements(By.cssSelector(".inventory_item_name"));
+        String productName1 = productName.get(productNumber).getText();
+
+        List <WebElement> productPrice = driver.findElements(By.cssSelector(".inventory_item_price"));
+        String productPrice1 = productPrice.get(productNumber).getText();
+
         List <WebElement> products = driver.findElements(By.cssSelector("[class*=btn]"));
-        WebElement product1 = products.get(0);
+        WebElement product1 = products.get(productNumber);
         product1.click();
 
-        String productDescriptionOnTheMainPage = driver.findElement(By.xpath("//div/div[text()='carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.']")).getText();
-        String productPriceOnTheMainPage = driver.findElement(By.xpath("//div/div[text()='29.99']")).getText();
+        String removeFromTheCartButton = driver.findElement(By.xpath("//button[text()='Remove']")).getText();
+        Assert.assertEquals(removeFromTheCartButton, "REMOVE");
 
         WebElement shoppingCart = driver.findElement(By.cssSelector("[class=shopping_cart_container]"));
         shoppingCart.click();
@@ -42,11 +50,11 @@ public class SwagLabs {
         WebElement checkoutButton = driver.findElement(By.cssSelector("#checkout"));
         Assert.assertEquals(checkoutButton.isDisplayed(), true);
 
-        WebElement productPriceInShoppingCart1 = driver.findElement(By.xpath("//div/div[text()='29.99']"));
-        Assert.assertEquals(productPriceInShoppingCart1.getText(), productPriceOnTheMainPage);
+        String productPriceInShoppingCart = driver.findElement(By.cssSelector(".inventory_item_price")).getText();
+        Assert.assertEquals(productPriceInShoppingCart, productPrice1);
 
-        WebElement productDescriptionInShoppingCart1 = driver.findElement(By.xpath("//div/div[text()='carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.']"));
-        Assert.assertEquals(productDescriptionInShoppingCart1.getText(), productDescriptionOnTheMainPage);
+        String productNameInShoppingCart = driver.findElement(By.cssSelector(".inventory_item_name")).getText();
+        Assert.assertEquals(productNameInShoppingCart, productName1);
 
         driver.quit();
     }

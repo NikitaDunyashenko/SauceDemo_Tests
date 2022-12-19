@@ -12,7 +12,7 @@ public class ProductsTests extends BaseTest{
         loginPage.clickLoginButton();
         Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
         productsPage.clickAddToCartButton("Sauce Labs Bike Light");
-        Assert.assertTrue(productsPage.isRemoveButtonAppears());
+        Assert.assertTrue(productsPage.isRemoveButtonAppears("Sauce Labs Bike Light"));
     }
 
     @Test
@@ -22,9 +22,9 @@ public class ProductsTests extends BaseTest{
         loginPage.clickLoginButton();
         Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
         productsPage.clickAddToCartButton("Sauce Labs Bike Light");
-        Assert.assertTrue(productsPage.isRemoveButtonAppears());
+        Assert.assertTrue(productsPage.isRemoveButtonAppears("Sauce Labs Bike Light"));
         productsPage.clickRemoveFromTheCartButton("Sauce Labs Bike Light");
-        Assert.assertTrue(productsPage.isAddToCartButtonAppears());
+        Assert.assertTrue(productsPage.isAddToCartButtonAppears("Sauce Labs Bike Light"));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class ProductsTests extends BaseTest{
         loginPage.clickLoginButton();
         Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
         productsPage.clickAddToCartButton("Sauce Labs Bike Light");
-        Assert.assertTrue(productsPage.isRemoveButtonAppears());
+        Assert.assertTrue(productsPage.isRemoveButtonAppears("Sauce Labs Bike Light"));
         productsPage.clickShoppingCartButton();
         Assert.assertTrue(cartPage.isCheckOutButtonPresent());
     }

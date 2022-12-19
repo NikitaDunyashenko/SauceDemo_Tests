@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8f3e290-03c5-4e1f-b74d-5d071ac5767e" name="Changes" comment="Successfully passed tests on SwagLabs website">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/BasePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/CartPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/LoginPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/ProductDetailsPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/ProductsPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/BaseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/CartTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/LoginTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/ProductsTests.java" afterDir="false" />
+    <list default="true" id="e8f3e290-03c5-4e1f-b74d-5d071ac5767e" name="Changes" comment="Successfully passed 5 new tests on SwagLabs website">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SwagLabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SwagLabs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pages/CartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/CartPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pages/ProductsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/ProductsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/ProductsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/ProductsTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +49,8 @@
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
-  <component name="RunManager" selected="TestNG.ProductsTests.openItemCard">
-    <configuration name="LoginTests.negativeLoginTest" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.SwagLabs.swagLabsTests">
+    <configuration name="LoginTests" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="SauceDemo_Tests" />
       <extension name="coverage">
         <pattern>
@@ -66,8 +60,24 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.LoginTests" />
-      <option name="METHOD_NAME" value="negativeLoginTest" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductsTests" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="SauceDemo_Tests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.ProductsTests" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
       <method v="2">
@@ -85,42 +95,6 @@
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.ProductsTests" />
       <option name="METHOD_NAME" value="addProductToTheCart" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductsTests.openItemCard" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="SauceDemo_Tests" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ProductsTests" />
-      <option name="METHOD_NAME" value="openItemCard" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductsTests.redirectingToShoppingCart" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="SauceDemo_Tests" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ProductsTests" />
-      <option name="METHOD_NAME" value="redirectingToShoppingCart" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -146,13 +120,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SwagLabs.swagLabsTests" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="SauceDemo_Tests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SwagLabs" />
+      <option name="METHOD_NAME" value="swagLabsTests" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.ProductsTests.openItemCard" />
-        <item itemvalue="TestNG.ProductsTests.redirectingToShoppingCart" />
+        <item itemvalue="TestNG.SwagLabs.swagLabsTests" />
+        <item itemvalue="TestNG.ProductsTests" />
+        <item itemvalue="TestNG.LoginTests" />
         <item itemvalue="TestNG.ProductsTests.removeFromTheCart" />
         <item itemvalue="TestNG.ProductsTests.addProductToTheCart" />
-        <item itemvalue="TestNG.LoginTests.negativeLoginTest" />
       </list>
     </recent_temporary>
   </component>
@@ -172,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670856301841</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Successfully passed 5 new tests on SwagLabs website">
+      <created>1670944007099</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670944007099</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,6 +181,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Successfully passed tests on SwagLabs website" />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfully passed tests on SwagLabs website" />
+    <MESSAGE value="Successfully passed 5 new tests on SwagLabs website" />
+    <option name="LAST_COMMIT_MESSAGE" value="Successfully passed 5 new tests on SwagLabs website" />
   </component>
 </project>

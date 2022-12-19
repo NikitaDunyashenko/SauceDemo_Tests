@@ -10,6 +10,10 @@ public class ProductsPage extends BasePage{
     private final static String ITEM_CONTAINER_LOCATOR = "//div[@class='inventory_item_name' and text()='%s']/ancestor::div[@class='inventory_item']";
     private final static By ADD_TO_CART_BUTTON = By.xpath("//button[text()='Add to cart']");
     private final static By REMOVE_FROM_THE_CART_BUTTON = By.xpath("//button[text()='Remove']");
+    private final static By ITEM_PRICE = By.xpath("//div[contains(text(),'$')]");
+    private final static By ITEM_DESCRIPTION = By.cssSelector(".inventory_item_desc");
+    private final static By ITEM_PICTURE = By.xpath("//img[@class='inventory_item_img']");
+
 
     public ProductsPage(WebDriver driver) {
         super (driver);
@@ -36,18 +40,18 @@ public class ProductsPage extends BasePage{
         driver.findElement(getItemContainerByName(itemName)).findElement(REMOVE_FROM_THE_CART_BUTTON).click();
     }
 
-    public boolean isRemoveButtonAppears() {
+    public boolean isRemoveButtonAppears(String itemName) {
         try{
-            driver.findElement(REMOVE_FROM_THE_CART_BUTTON);
+            driver.findElement(getItemContainerByName(itemName)).findElement(REMOVE_FROM_THE_CART_BUTTON);
         } catch (NoSuchElementException e1) {
             return false;
         }
         return true;
     }
 
-    public boolean isAddToCartButtonAppears() {
+    public boolean isAddToCartButtonAppears(String itemName) {
         try{
-            driver.findElement(ADD_TO_CART_BUTTON);
+            driver.findElement(getItemContainerByName(itemName)).findElement(ADD_TO_CART_BUTTON);
         } catch (NoSuchElementException e2) {
             return false;
         }
@@ -55,15 +59,15 @@ public class ProductsPage extends BasePage{
     }
 
     public String getItemPrice(String itemName) {
-        return driver.findElement(getItemContainerByName(itemName)).findElement(By.xpath("//div[contains(text(),'$')]")).getText();
+        return driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_PRICE).getText();
     }
 
     public String getItemDescription(String itemName) {
-        return driver.findElement(getItemContainerByName(itemName)).findElement(By.cssSelector(".inventory_item_desc")).getText();
+        return driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_DESCRIPTION).getText();
     }
 
     public void openItem(String itemName) {
-        driver.findElement(getItemContainerByName(itemName)).findElement(By.xpath("//img[@class='inventory_item_img']")).click();
+        driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_PICTURE).click();
     }
 
     private By getItemContainerByName(String itemName) {
