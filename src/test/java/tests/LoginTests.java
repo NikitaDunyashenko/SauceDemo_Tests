@@ -1,11 +1,13 @@
 package tests;
 
+import jdk.jfr.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke"})
+    @Description("checking the possibility to login after entering the correct email and password")
     public void positiveLoginTest() {
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
@@ -13,7 +15,8 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
     }
 
-    @Test
+    @Test(groups = {"smoke"})
+    @Description("checking the possibility to login after entering the incorrect email and password")
     public void negativeLoginTest() {
         loginPage.setUserName("standard1_user");
         loginPage.setPassword("secret1_sauce");
