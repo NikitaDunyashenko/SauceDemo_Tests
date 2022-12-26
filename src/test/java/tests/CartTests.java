@@ -49,7 +49,7 @@ public class CartTests extends BaseTest{
         Assert.assertEquals(productPriceOnMainPage, productPriceInShoppingCart);
 
         cartPage.clickRemoveFromTheCartButton(productName);
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+
         Assert.assertEquals(cartPage.isItemDisplayed(productName), false);
     }
 

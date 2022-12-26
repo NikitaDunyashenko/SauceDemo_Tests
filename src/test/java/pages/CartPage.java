@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class CartPage extends BasePage{
 
     private static final By CHECKOUT_BUTTON = By.id("checkout");
@@ -37,12 +39,15 @@ public class CartPage extends BasePage{
     }
 
     public boolean isItemDisplayed(String itemName) {
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         try{
             driver.findElement(getItemLabelLocator(itemName)).findElement(ITEM_NAME).isDisplayed();
         } catch (NoSuchElementException e4){
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             return false;
         }
             return true;
+
     }
 
     public void clickContinueShoppingButton() {
