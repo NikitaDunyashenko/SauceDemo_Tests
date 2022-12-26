@@ -1,9 +1,12 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import jdk.jfr.Description;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 public class CartTests extends BaseTest{
 
@@ -26,6 +29,7 @@ public class CartTests extends BaseTest{
         Assert.assertEquals(productPriceOnMainPage, productPriceInShoppingCart);
     }
 
+
     @Test(dataProvider = "productNameData", groups = {"smoke"})
     @Description("checking if added to the cart product is possible to remove from shopping cart")
     public void removeProductFromTheCart(String productName) {
@@ -45,6 +49,7 @@ public class CartTests extends BaseTest{
         Assert.assertEquals(productPriceOnMainPage, productPriceInShoppingCart);
 
         cartPage.clickRemoveFromTheCartButton(productName);
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         Assert.assertEquals(cartPage.isItemDisplayed(productName), false);
     }
 

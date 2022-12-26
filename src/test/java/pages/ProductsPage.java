@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ProductsPage extends BasePage{
 
-    private final static By SHOPPING_CART_BUTTON = By.cssSelector(".shopping_cart_link");
+    private final static By SHOPPING_CART_BUTTON = By.cssSelector("#shopping_cart_container");
     private final static String ITEM_CONTAINER_LOCATOR = "//div[@class='inventory_item_name' and text()='%s']/ancestor::div[@class='inventory_item']";
     private final static By ADD_TO_CART_BUTTON = By.xpath(".//button[text()='Add to cart']");
     private final static By REMOVE_FROM_THE_CART_BUTTON = By.xpath(".//button[text()='Remove']");
