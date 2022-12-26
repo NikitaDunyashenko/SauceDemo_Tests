@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import pages.CartPage;
 import pages.LoginPage;
 import pages.ProductDetailsPage;
@@ -13,6 +14,7 @@ import pages.ProductsPage;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners(TestListener.class)
 public abstract class BaseTest {
 
     protected WebDriver driver;
@@ -21,7 +23,7 @@ public abstract class BaseTest {
     protected CartPage cartPage;
     protected ProductDetailsPage productDetailsPage;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true, description = "Setting up the driver")
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -34,12 +36,12 @@ public abstract class BaseTest {
         productDetailsPage = new ProductDetailsPage(driver);
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true, description = "Website URL")
     public void navigate() {
         driver.get("https://www.saucedemo.com/");
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass(alwaysRun = true, description = "Quiting the website after each class")
     public void tearDown() {
         driver.quit();
     }
