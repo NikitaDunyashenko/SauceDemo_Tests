@@ -3,10 +3,8 @@ package tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
+import org.openqa.selenium.safari.SafariDriver;
+import org.testng.annotations.*;
 import pages.CartPage;
 import pages.LoginPage;
 import pages.ProductDetailsPage;
@@ -23,10 +21,18 @@ public abstract class BaseTest {
     protected CartPage cartPage;
     protected ProductDetailsPage productDetailsPage;
 
+    @Parameters({"browser"})
     @BeforeClass(alwaysRun = true, description = "Setting up the driver")
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    public void setUp(String browserName) {
+
+        if (browserName.equals("chrome")) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        } else if(browserName.equals("safari")){
+            WebDriverManager.safaridriver().setup();
+            driver = new SafariDriver();
+        }
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
