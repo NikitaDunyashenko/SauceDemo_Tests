@@ -76,6 +76,24 @@ public class CartTests extends BaseTest{
 
     }
 
+    @Test(groups = {"smoke"})
+    @Description("checking if it's possible to redirect user to checkout page")
+    public void redirectingToCheckoutPage() {
+        loginPage.setUserName("standard_user");
+        loginPage.setPassword("secret_sauce");
+        loginPage.clickLoginButton();
+        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+
+        productsPage.clickAddToCartButton("Sauce Labs Bike Light");
+        Assert.assertTrue(productsPage.isRemoveButtonAppears("Sauce Labs Bike Light"));
+        productsPage.clickShoppingCartButton();
+        Assert.assertTrue(cartPage.isCheckOutButtonPresent());
+
+        cartPage.clickCheckoutButton();
+        Assert.assertTrue(checkoutPage.isPageNameDisplays());
+
+    }
+
     @DataProvider()
     public Object[][] productNameData() {
         return new Object[][]{

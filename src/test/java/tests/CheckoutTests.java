@@ -1,0 +1,81 @@
+package tests;
+
+import jdk.jfr.Description;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class CheckoutTests extends BaseTest{
+
+    @Test(groups = {"smoke"})
+    @Description("checking if it's possible to fill the checkout form")
+    public void settingValuesToCheckoutForm() {
+        loginPage.setUserName("standard_user");
+        loginPage.setPassword("secret_sauce");
+        loginPage.clickLoginButton();
+        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+
+        productsPage.clickAddToCartButton("Sauce Labs Bike Light");
+        Assert.assertTrue(productsPage.isRemoveButtonAppears("Sauce Labs Bike Light"));
+        productsPage.clickShoppingCartButton();
+        Assert.assertTrue(cartPage.isCheckOutButtonPresent());
+
+        cartPage.clickCheckoutButton();
+        Assert.assertTrue(checkoutPage.isPageNameDisplays());
+
+        checkoutPage.fillingCheckoutForm();
+        checkoutPage.clickContinueButton();
+        Assert.assertTrue(checkoutOverviewPage.isCheckoutOverviewPageNameDisplays());
+    }
+
+    @Test(dataProvider = "dataForFillingCheckoutFormNegative", groups = {"smoke"})
+    @Description("checking if it's possible for user to be redirected to the next page in case of leaving some fields empty")
+    public void fillingCheckoutFormNegative(String firstName, String lastName, String postalCode, String errorMessage, String itemName) {
+        loginPage.setUserName("standard_user");
+        loginPage.setPassword("secret_sauce");
+        loginPage.clickLoginButton();
+        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+
+        productsPage.clickAddToCartButton(itemName);
+        Assert.assertTrue(productsPage.isRemoveButtonAppears(itemName));
+        productsPage.clickShoppingCartButton();
+        Assert.assertTrue(cartPage.isCheckOutButtonPresent());
+
+        cartPage.clickCheckoutButton();
+        Assert.assertTrue(checkoutPage.isPageNameDisplays());
+
+        checkoutPage.fillingCheckoutFormForNegative(firstName, lastName, postalCode);
+        checkoutPage.clickContinueButton();
+        Assert.assertEquals(checkoutPage.getErrorMessage(), errorMessage);
+
+
+    }
+
+    @Test(groups = {"Regression"})
+    @Description("checking if it's possible to go back to shopping cart from the checkout page")
+    public void redirectingBackToShoppingCartPage() {
+        loginPage.setUserName("standard_user");
+        loginPage.setPassword("secret_sauce");
+        loginPage.clickLoginButton();
+        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+
+        productsPage.clickAddToCartButton("Sauce Labs Bike Light");
+        Assert.assertTrue(productsPage.isRemoveButtonAppears("Sauce Labs Bike Light"));
+        productsPage.clickShoppingCartButton();
+        Assert.assertTrue(cartPage.isCheckOutButtonPresent());
+
+        cartPage.clickCheckoutButton();
+        Assert.assertTrue(checkoutPage.isPageNameDisplays());
+        checkoutPage.clickCancelButton();
+        Assert.assertTrue(cartPage.isCartPageNameDisplays());
+    }
+
+    @DataProvider()
+    public Object[][] dataForFillingCheckoutFormNegative() {
+        return new Object[][] {
+                {"", "", "", "Error: First Name is required", "Sauce Labs Backpack"},
+                {"Nikita", "", "", "Error: Last Name is required", "Sauce Labs Bike Light"},
+                {"Nikita", "Dunyashenko", "", "Error: Postal Code is required", "Sauce Labs Bolt T-Shirt"},
+        };
+    }
+}
