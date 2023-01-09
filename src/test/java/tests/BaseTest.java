@@ -4,11 +4,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
-import pages.CartPage;
-import pages.LoginPage;
-import pages.ProductDetailsPage;
-import pages.ProductsPage;
+import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,10 +18,12 @@ public abstract class BaseTest {
     protected ProductsPage productsPage;
     protected CartPage cartPage;
     protected ProductDetailsPage productDetailsPage;
+    protected CheckoutPage checkoutPage;
+    protected CheckoutOverviewPage checkoutOverviewPage;
 
     @Parameters({"browser"})
     @BeforeClass(alwaysRun = true, description = "Setting up the driver")
-    public void setUp(String browserName) {
+    public void setUp(String browserName, ITestContext testContext) {
 
         if (browserName.equals("chrome")) {
             WebDriverManager.chromedriver().setup();
@@ -36,10 +36,14 @@ public abstract class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+        testContext.setAttribute("driver", driver);
+
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
         productDetailsPage = new ProductDetailsPage(driver);
+        checkoutPage = new CheckoutPage(driver);
+        checkoutOverviewPage = new CheckoutOverviewPage(driver);
     }
 
     @BeforeMethod(alwaysRun = true, description = "Website URL")

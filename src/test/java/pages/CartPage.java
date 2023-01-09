@@ -15,6 +15,7 @@ public class CartPage extends BasePage{
     private final static By ITEM_DESCRIPTION = By.cssSelector(".inventory_item_desc");
     private final static By ITEM_PRICE = By.xpath(".//div[contains(text(),'$')]");
     private final static By ITEM_NAME = By.cssSelector(".inventory_item_name");
+    private final static By CART_PAGE_NAME = By.cssSelector(".title");
 
 
     public CartPage(WebDriver driver) {
@@ -28,6 +29,14 @@ public class CartPage extends BasePage{
            return false;
         }
         return true;
+    }
+
+    public boolean isCartPageNameDisplays() {
+        if (driver.findElement(CART_PAGE_NAME).isDisplayed()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String getItemDescription(String itemName) {
