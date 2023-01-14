@@ -25,13 +25,7 @@ public class CheckoutPage extends BasePage{
         }
     }
 
-    public void fillingCheckoutForm() {
-        driver.findElement(FIRST_NAME_INPUT).sendKeys("Nikita");
-        driver.findElement(LAST_NAME_INPUT).sendKeys("Dunyashenko");
-        driver.findElement(POSTAL_CODE_INPUT).sendKeys("220019");
-    }
-
-    public void fillingCheckoutFormForNegative(String firstName, String lastName, String postalCode) {
+    public void fillingCheckoutForm(String firstName, String lastName, String postalCode) {
         driver.findElement(FIRST_NAME_INPUT).sendKeys(firstName);
         driver.findElement(LAST_NAME_INPUT).sendKeys(lastName);
         driver.findElement(POSTAL_CODE_INPUT).sendKeys(postalCode);
