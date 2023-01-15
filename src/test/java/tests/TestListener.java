@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import utils.AllureUtils;
 
 import java.util.Date;
 
@@ -24,5 +25,7 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
         System.out.println("Test " + result.getName() + " failed");
+        WebDriver driver = (WebDriver) result.getTestContext().getAttribute("driver");
+        AllureUtils.attachScreenshot(driver);
     }
 }
