@@ -14,6 +14,11 @@ public class LoginPage extends BasePage {
         super (driver);
     }
 
+    @Override
+    public boolean isPageOpened() {
+        return driver.findElement(loginButton).isDisplayed();
+    }
+
     public void clickLoginButton() {
         driver.findElement(loginButton).click();
     }

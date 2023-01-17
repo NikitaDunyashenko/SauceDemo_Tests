@@ -16,10 +16,11 @@ public class LoginTests extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Description("checking the possibility to login after entering the correct email and password")
     public void positiveLoginTest() {
-        loginPage.setUserName("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        boolean isShoppingCartButton = loginPageFactory.setUserNameInput("standard_user")
+                .setPasswordInput("secret_sauce")
+                .clickLogin()
+                .isShoppingCartButtonPresent();
+        Assert.assertTrue(isShoppingCartButton);
     }
 
     @Test(groups = {"smoke"})
@@ -28,10 +29,10 @@ public class LoginTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Description("checking the possibility to login after entering the incorrect email and password")
     public void negativeLoginTest() {
-        loginPage.setUserName("standard1_user");
-        loginPage.setPassword("secret1_sauce");
-        loginPage.clickLoginButton();
-        Assert.assertEquals(loginPage.getErrorMessageText(), "Epic sadface: Username and password do not match any user in this service");
+        loginPageFactory.setUserNameInput("qwe123")
+                .setPasswordInput("123qwe")
+                .clickLogin();
+        Assert.assertEquals(loginPageFactory.getErrorMessage(), "Epic sadface: Username and password do not match any user in this service");
     }
 
 

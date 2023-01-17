@@ -17,6 +17,11 @@ public class CheckoutPage extends BasePage{
         super(driver);
     }
 
+    @Override
+    public boolean isPageOpened() {
+        return isPageNameDisplays();
+    }
+
     public boolean isPageNameDisplays() {
         if (driver.findElement(PAGE_NAME).isDisplayed()) {
             return true;

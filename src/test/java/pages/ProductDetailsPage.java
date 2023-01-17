@@ -11,6 +11,11 @@ public class ProductDetailsPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public boolean isPageOpened() {
+        return isBackToProductsButtonPresent();
+    }
+
     public boolean isBackToProductsButtonPresent() {
         return driver.findElement(BACK_TO_PRODUCTS_BUTTON).isDisplayed();
     }
