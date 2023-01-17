@@ -20,6 +20,7 @@ public abstract class BaseTest {
     protected ProductDetailsPage productDetailsPage;
     protected CheckoutPage checkoutPage;
     protected CheckoutOverviewPage checkoutOverviewPage;
+    protected LoginPageFactory loginPageFactory;
 
     @Parameters({"browser"})
     @BeforeClass(alwaysRun = true, description = "Setting up the driver")
@@ -44,6 +45,7 @@ public abstract class BaseTest {
         productDetailsPage = new ProductDetailsPage(driver);
         checkoutPage = new CheckoutPage(driver);
         checkoutOverviewPage = new CheckoutOverviewPage(driver);
+        loginPageFactory = new LoginPageFactory(driver);
     }
 
     @BeforeMethod(alwaysRun = true, description = "Website URL")

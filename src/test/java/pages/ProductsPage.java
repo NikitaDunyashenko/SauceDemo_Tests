@@ -19,6 +19,11 @@ public class ProductsPage extends BasePage{
         super (driver);
     }
 
+    @Override
+    public boolean isPageOpened() {
+        return isShoppingCartButtonPresent();
+    }
+
     public boolean isShoppingCartButtonPresent() {
         try {
             driver.findElement(SHOPPING_CART_BUTTON);

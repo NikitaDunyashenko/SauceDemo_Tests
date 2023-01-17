@@ -23,7 +23,7 @@ public class CartTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
 
         productsPage.clickAddToCartButton(productName);
         String productDescriptionOnMainPage = productsPage.getItemDescription(productName);
@@ -46,7 +46,7 @@ public class CartTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
 
         productsPage.clickAddToCartButton(productName);
         String productDescriptionOnMainPage = productsPage.getItemDescription(productName);
@@ -72,7 +72,7 @@ public class CartTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
 
         productsPage.clickAddToCartButton(productName);
         String productDescriptionOnMainPage = productsPage.getItemDescription(productName);
@@ -98,15 +98,15 @@ public class CartTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
 
         productsPage.clickAddToCartButton("Sauce Labs Bike Light");
         Assert.assertTrue(productsPage.isRemoveButtonAppears("Sauce Labs Bike Light"));
         productsPage.clickShoppingCartButton();
-        Assert.assertTrue(cartPage.isCheckOutButtonPresent());
+        Assert.assertTrue(cartPage.isPageOpened());
 
         cartPage.clickCheckoutButton();
-        Assert.assertTrue(checkoutPage.isPageNameDisplays());
+        Assert.assertTrue(checkoutPage.isPageOpened());
 
     }
 

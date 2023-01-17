@@ -20,7 +20,7 @@ public class ProductsTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
         productsPage.clickAddToCartButton(productName);
         Assert.assertTrue(productsPage.isRemoveButtonAppears(productName));
     }
@@ -34,7 +34,7 @@ public class ProductsTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
         productsPage.clickAddToCartButton(productName);
         Assert.assertTrue(productsPage.isRemoveButtonAppears(productName));
         productsPage.clickRemoveFromTheCartButton(productName);
@@ -50,11 +50,11 @@ public class ProductsTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
         productsPage.clickAddToCartButton("Sauce Labs Bike Light");
         Assert.assertTrue(productsPage.isRemoveButtonAppears("Sauce Labs Bike Light"));
         productsPage.clickShoppingCartButton();
-        Assert.assertTrue(cartPage.isCheckOutButtonPresent());
+        Assert.assertTrue(cartPage.isPageOpened());
     }
 
     @Test(groups = {"slow"})
@@ -66,9 +66,9 @@ public class ProductsTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
         productsPage.openItem("Sauce Labs Bike Light");
-        Assert.assertTrue(productDetailsPage.isBackToProductsButtonPresent());
+        Assert.assertTrue(productDetailsPage.isPageOpened());
     }
 
     @DataProvider()

@@ -20,15 +20,15 @@ public class CheckoutTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
 
         productsPage.clickAddToCartButton("Sauce Labs Bike Light");
         Assert.assertTrue(productsPage.isRemoveButtonAppears("Sauce Labs Bike Light"));
         productsPage.clickShoppingCartButton();
-        Assert.assertTrue(cartPage.isCheckOutButtonPresent());
+        Assert.assertTrue(cartPage.isPageOpened());
 
         cartPage.clickCheckoutButton();
-        Assert.assertTrue(checkoutPage.isPageNameDisplays());
+        Assert.assertTrue(checkoutPage.isPageOpened());
 
         String firstName = "Nikita";
         String lastName = "Dunyashenko";
@@ -36,7 +36,7 @@ public class CheckoutTests extends BaseTest{
 
         checkoutPage.fillingCheckoutForm(firstName, lastName, String.valueOf(postalCode));
         checkoutPage.clickContinueButton();
-        Assert.assertTrue(checkoutOverviewPage.isCheckoutOverviewPageNameDisplays());
+        Assert.assertTrue(checkoutOverviewPage.isPageOpened());
     }
 
     @Test(dataProvider = "dataForFillingCheckoutFormNegative", groups = {"smoke"})
@@ -48,15 +48,15 @@ public class CheckoutTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
 
         productsPage.clickAddToCartButton(itemName);
         Assert.assertTrue(productsPage.isRemoveButtonAppears(itemName));
         productsPage.clickShoppingCartButton();
-        Assert.assertTrue(cartPage.isCheckOutButtonPresent());
+        Assert.assertTrue(cartPage.isPageOpened());
 
         cartPage.clickCheckoutButton();
-        Assert.assertTrue(checkoutPage.isPageNameDisplays());
+        Assert.assertTrue(checkoutPage.isPageOpened());
 
         checkoutPage.fillingCheckoutForm(firstName, lastName, postalCode);
         checkoutPage.clickContinueButton();
@@ -74,17 +74,17 @@ public class CheckoutTests extends BaseTest{
         loginPage.setUserName("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
 
         productsPage.clickAddToCartButton("Sauce Labs Bike Light");
         Assert.assertTrue(productsPage.isRemoveButtonAppears("Sauce Labs Bike Light"));
         productsPage.clickShoppingCartButton();
-        Assert.assertTrue(cartPage.isCheckOutButtonPresent());
+        Assert.assertTrue(cartPage.isPageOpened());
 
         cartPage.clickCheckoutButton();
-        Assert.assertTrue(checkoutPage.isPageNameDisplays());
+        Assert.assertTrue(checkoutPage.isPageOpened());
         checkoutPage.clickCancelButton();
-        Assert.assertTrue(cartPage.isCartPageNameDisplays());
+        Assert.assertTrue(cartPage.isPageOpened());
     }
 
     @DataProvider()

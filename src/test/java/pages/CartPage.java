@@ -22,6 +22,11 @@ public class CartPage extends BasePage{
         super (driver);
     }
 
+    @Override
+    public boolean isPageOpened() {
+        return isCartPageNameDisplays();
+    }
+
     public boolean isCheckOutButtonPresent() {
         try {
             driver.findElement(CHECKOUT_BUTTON);
